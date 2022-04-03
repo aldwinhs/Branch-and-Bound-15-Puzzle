@@ -23,21 +23,41 @@ elif(inputOptions == "3"):
     exit()
 
 print("Matrix :")
-for i in range(4):
-    for j in range(4):
-        print(matrix[i][j], end=" ")
-    print()
+printMatrix(matrix)
 
-timeStart = time.time()
+
+
+# Print all Kurang(i)
+initialKurang(matrix)
+print()
 
 # Check if puzzle is solvable
 if(isSolveable(matrix)):
     # Solve puzzle
-    solve(matrix)
+    print("Puzzle dapat diselesaikan")
+    print("Solving...\n")
+    timeStart = time.time()
+    solution, nodeCount = solve(matrix)
+    timeEnd = time.time()
+
+    # Initialize result
+    result = []
+
+    # Backtrack to root
+    while(solution.parent != None):
+        result.append(solution.move)
+        solution = solution.parent
+
+    # Reverse result
+    result.reverse()
+
+    # Print result
+    printSteps(matrix, result)
+    print("All Steps:", result)
+    print("Total Steps:", len(result))
+    print("Node Count:", nodeCount)
+
+    print("Time: ", timeEnd-timeStart)
 else:
     # Puzzle unsolvable
     print("Puzzle tidak dapat diselesaikan")
-
-timeEnd = time.time()
-
-print("Time: ", timeEnd-timeStart)
