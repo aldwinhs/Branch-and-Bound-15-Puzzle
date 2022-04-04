@@ -24,6 +24,7 @@ elif(inputOptions == "3"):
 
 print("Matrix :")
 printMatrix(matrix)
+print()
 
 
 

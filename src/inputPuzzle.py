@@ -9,7 +9,7 @@ def inputFile():
 
     for i in range(4):
         for j in range(4):
-            if(matrix[i][j] == '-'):
+            if(matrix[i][j] == '-' or matrix[i][j] == '0'):
                 matrix[i][j] = 16
             else:
                 matrix[i][j] = int(matrix[i][j])
